@@ -7,10 +7,34 @@ module Components
   extend Phlex::Kit
 end
 
-Rails.autoloaders.main.push_dir(
-  Rails.root.join("app/views"), namespace: Views
-)
 
-Rails.autoloaders.main.push_dir(
-  Rails.root.join("app/components"), namespace: Components
-)
+# config/initializers/render_object_support.rb
+
+module ObjectRendererPatch
+  def render(options = nil, *args, &block)
+    if options.respond_to?(:render_in)
+      options.render_in(self, &block)
+    else
+      super
+    end
+  end
+end
+
+ActionView::Base.prepend(ObjectRendererPatch)
+
+module ControllerRendererPatch
+  def render(options = nil, *args, &block)
+    if options.respond_to?(:render_in)
+      template = options.render_in(view_context, &block) # Handle objects with `render_in` method
+      render inline: template
+    else
+      super # Call the original `render` method
+    end
+  end
+end
+
+ActionController::Base.prepend(ControllerRendererPatch)
+
+ActiveSupport::Dependencies.autoload_paths << Rails.root.join("app/views")
+
+ActiveSupport::Dependencies.autoload_paths << Rails.root.join("app/components")
