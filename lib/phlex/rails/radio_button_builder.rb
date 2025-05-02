@@ -5,6 +5,6 @@ class Phlex::Rails::RadioButtonBuilder < Phlex::Rails::Decorator
 	def value(...) = @object.value(...)
 	def object(...) = @object.object(...)
 
-	output def label(...) = nil
-	output def radio_button(...) = nil
+	output def label(...); nil; end
+	output def radio_button(...); nil; end
 end

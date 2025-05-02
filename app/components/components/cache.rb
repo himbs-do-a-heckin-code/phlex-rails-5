@@ -5,7 +5,7 @@ class Components::Cache < Phlex::HTML
 		@text = text
 	end
 
-	def cache_store = Rails.cache
+	def cache_store; Rails.cache; end
 
 	def view_template
 		cache do

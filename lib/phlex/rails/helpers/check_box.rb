@@ -4,5 +4,5 @@ module Phlex::Rails::Helpers::CheckBox
 	extend Phlex::Rails::HelperMacros
 
 	# [Rails Docs](https://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-check_box)
-	register_output_helper def check_box(...) = nil
+	register_output_helper def check_box(...); nil; end
 end

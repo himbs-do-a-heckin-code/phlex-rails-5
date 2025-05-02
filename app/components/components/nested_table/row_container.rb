@@ -8,16 +8,16 @@ class Components::NestedTable::RowContainer < Phlex::HTML
 		@rows = []
 	end
 
-	def with_row(&)
-		@rows << Components::NestedTable::Row.new(&)
+	def with_row(&blk)
+		@rows << Components::NestedTable::Row.new(&blk)
 	end
 
 	def with_content(&block)
 		@rows << block
 	end
 
-	def before_template(&)
-		capture(&)
+	def before_template(&blk)
+		capture(&blk)
 		super
 	end
 

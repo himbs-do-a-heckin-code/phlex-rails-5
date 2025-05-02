@@ -22,7 +22,7 @@ module Phlex::Rails::SGML
 			const_name = name.to_s.gsub("?", "")
 
 			module_name = Phlex::Rails::Helpers.constants.find do |mod|
-				mod.name.underscore.gsub("domid", "dom_id") == const_name
+				mod.to_s.underscore.gsub("domid", "dom_id") == const_name
 			end
 
 			# If we're missing a helper module, raise a NoMethodError with a helpful message,
@@ -39,11 +39,11 @@ module Phlex::Rails::SGML
 		end
 	end
 
-	def partial(*, **, &block)
+	def partial(*args, **kwargs, &block)
 		if block
-			Phlex::Rails::Partial.new(*, **) { capture(&block) }
+			Phlex::Rails::Partial.new(*args, **kwargs) { capture(&block) }
 		else
-			Phlex::Rails::Partial.new(*, **)
+			Phlex::Rails::Partial.new(*args, **kwargs)
 		end
 	end
 
@@ -119,8 +119,8 @@ module Phlex::Rails::SGML
 		end
 
 		context = {
-			rails_view_context:,
-			capture_context:,
+			rails_view_context: rails_view_context,
+			capture_context: capture_context,
 		}
 
 		fragments = if (request = context[:rails_view_context].request) && (fragment_header = request.headers["X-Fragments"])
@@ -129,9 +129,9 @@ module Phlex::Rails::SGML
 
 		capture_context.capture do
 			if erb
-				call(context:, fragments:, &erb).html_safe
+				call(context: context, fragments: fragments, &erb).html_safe
 			else
-				call(context:, fragments:).html_safe
+				call(context: context, fragments: fragments).html_safe
 			end
 		end
 	end

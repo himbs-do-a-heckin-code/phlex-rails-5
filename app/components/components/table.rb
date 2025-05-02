@@ -6,8 +6,8 @@ class Components::Table < Phlex::HTML
 		@columns = []
 	end
 
-	def view_template(&)
-		vanish(&)
+	def view_template(&blk)
+		vanish(&blk)
 
 		table do
 			thead do
@@ -29,6 +29,10 @@ class Components::Table < Phlex::HTML
 	end
 
 	def column(header, &content)
-		@columns << { header:, content: }
+		@columns << { header: header, content: content}
 	end
+  
+  def to_partial_path
+    ''
+  end
 end

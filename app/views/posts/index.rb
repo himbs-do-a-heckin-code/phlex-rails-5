@@ -22,3 +22,7 @@ module Views
 		end
 	end
 end
+
+module Posts
+  Index = ::Views::Posts::Index
+end

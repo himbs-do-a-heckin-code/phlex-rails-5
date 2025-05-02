@@ -5,6 +5,6 @@ class Phlex::Rails::CheckboxBuilder < Phlex::Rails::Decorator
 	def value(...) = @object.value(...)
 	def object(...) = @object.object(...)
 
-	output def label(...) = nil
-	output def checkbox(...) = nil
+	output def label(...); nil; end
+	output def checkbox(...); nil; end
 end

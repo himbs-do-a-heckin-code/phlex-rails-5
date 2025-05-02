@@ -4,5 +4,5 @@ module Phlex::Rails::Helpers::TextAreaTag
 	extend Phlex::Rails::HelperMacros
 
 	# [Rails Docs](https://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-text_area_tag)
-	register_output_helper def text_area_tag(...) = nil
+	register_output_helper def text_area_tag(...); nil; end
 end

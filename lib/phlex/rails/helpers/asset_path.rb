@@ -6,5 +6,5 @@ module Phlex::Rails::Helpers::AssetPath
 	# This is the entry point for all assets.
 	#
 	# [Rails Docs](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html#method-i-asset_path)
-	register_value_helper def asset_path(...) = nil
+	register_value_helper def asset_path(...); nil; end
 end

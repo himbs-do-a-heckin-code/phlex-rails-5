@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Components::Nav < Phlex::HTML
-	def view_template(&)
-		nav(class: "special-nav", &)
+	def view_template(&blk)
+		nav(class: "special-nav", &blk)
 	end
 
-	def item(href, &)
-		a(class: "special-nav-item", href:, &)
+	def item(href, &blk)
+		a(class: "special-nav-item", href: href, &blk)
 	end
 
 	def divider

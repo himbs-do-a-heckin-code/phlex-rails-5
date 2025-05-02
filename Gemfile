@@ -5,16 +5,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gemspec
 
-gem "phlex", github: "phlex-ruby/phlex"
-gem "view_component"
-gem "appraisal"
+gem 'phlex', git: 'https://github.com/himbs-do-a-heckin-code/phlex_ruby2.7', branch: 'main'
 
-gem "rails"
-
-gem "quickdraw", github: "joeldrapper/quickdraw"
+gem 'rails', '~> 5.1.0'
 
 group :development do
 	gem "rubocop"
-	gem "ruby-lsp"
-	gem "bootsnap"
 end
+
+group :test do
+  gem 'rspec-rails', '~> 3.5'
+end
+
+gem 'byebug'

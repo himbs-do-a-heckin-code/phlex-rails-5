@@ -17,8 +17,8 @@ module Phlex::Rails
 		include Helpers::TurboRefreshesWith
 
 		module Interface
-			def render(view_context, _locals, &)
-				new.render(view_context, &)
+			def render(view_context, _locals, &blk)
+				new.render(view_context, &blk)
 			end
 
 			def identifier

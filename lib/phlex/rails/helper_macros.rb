@@ -40,7 +40,7 @@ module Phlex::Rails::HelperMacros
 			def #{method_name}(*args, **kwargs)
 				output = if block_given?
 					view_context.#{method_name}(*args, **kwargs) { |builder|
-					yield #{builder.name}.new(builder, component: self)
+					yield #{builder.to_s}.new(builder, component: self)
 					}
 				else
 					view_context.#{method_name}(*args, **kwargs)

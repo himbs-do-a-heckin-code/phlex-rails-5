@@ -3,11 +3,11 @@
 module Phlex
 	module Rails
 		module CSV
-			def each_item(&)
+			def each_item(&blk)
 				return super unless ActiveRecord::Relation === collection
 				return super unless collection.arel.orders.empty?
 
-				collection.find_each(&)
+				collection.find_each(&blk)
 			end
 		end
 	end
