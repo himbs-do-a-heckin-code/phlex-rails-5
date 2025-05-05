@@ -7,7 +7,7 @@ module Phlex::Generators
 		def create_view
 			template "view.rb.erb", File.join(
 				destination_root,
-				"app/views",
+				"app/views/views",
 				class_path,
 				"#{file_name}.rb"
 			)

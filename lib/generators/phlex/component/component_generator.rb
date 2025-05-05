@@ -7,7 +7,7 @@ module Phlex::Generators
 		def create_component
 			template "component.rb.erb", File.join(
 				destination_root,
-				"app/components",
+				"app/components/components",
 				class_path,
 				"#{file_name}.rb"
 			)

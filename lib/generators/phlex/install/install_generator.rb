@@ -9,11 +9,11 @@ module Phlex::Generators
 		end
 
 		def create_base_component
-			template "base_component.rb.erb", File.join(destination_root, "app/components/base.rb")
+			template "base_component.rb.erb", File.join(destination_root, "app/components/components/base.rb")
 		end
 
 		def create_base_view
-			template "base_view.rb.erb", File.join(destination_root, "app/views/base.rb")
+			template "base_view.rb.erb", File.join(destination_root, "app/views/views/base.rb")
 		end
 	end
 end
